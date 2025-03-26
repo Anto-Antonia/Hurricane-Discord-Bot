@@ -4,11 +4,13 @@
 
 Hurricane is a Discord bot designed to help server administrators manage their communities more efficiently. It automates common tasks, saving time and reducing manual work, especially for large servers.
 ## Features
- * Auto Role Assignment: Automatically assigns the `Member` role to users as soon as they join the server.
+ * **Auto Role Assignment:** Automatically assigns the `Member` role to users as soon as they join the server.
 
- * Role Management: Requires access to manage roles for proper functionality.
+ * **Custom Role Assignment:** Admins can use `!setRole <role_name>` to assign a custom role to new members joining the server. This role will be applied to all new members after the command is executed.
 
- * Free to Use: Hurricane is completely free and available for all Discord server owners.
+ * **Role Management:** Requires access to manage roles for proper functionality.
+
+ * **Free to Use:** Hurricane is completely free and available for all Discord server owners.
 
 ## Usage
 Once the bot is added to the server, it will require permission to manage roles. 
