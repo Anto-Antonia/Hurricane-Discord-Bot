@@ -27,5 +27,11 @@
             <version>1.2.10</version>
         </dependency>
 
+        <dependency>            <!-- dependency for SQLite -->
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.43.2.1</version>
+        </dependency>
+
     </dependencies>
 </project>
