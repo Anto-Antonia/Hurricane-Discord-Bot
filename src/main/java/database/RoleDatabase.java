@@ -42,4 +42,16 @@ public class RoleDatabase {
         }
         return null;
     }
+
+    public static void removeRoleFromGuild(String guildId){
+        try(Connection connection = DriverManager.getConnection(DB_URL);
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM server_roles WHERE guild_id = ?")) {
+            statement.setString(1,  guildId);
+            statement.executeUpdate();
+            System.out.println("Custom role assignment has been removed for guild: " + guildId);
+        }   catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

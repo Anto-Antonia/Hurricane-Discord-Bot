@@ -103,5 +103,15 @@ public class BotMain extends ListenerAdapter {
             RoleDatabase.SaveRoleForGuild(event.getGuild().getId(), role.getId(), roleName);
             event.getChannel().sendMessage("Custom role set to: " + roleName).queue();
         }
+
+        if(message.startsWith("!removeRole")){
+            if(!event.getMember().hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)){
+                event.getChannel().sendMessage("You must be an admin to remove the custom role!").queue();
+                return;
+            }
+
+            RoleDatabase.removeRoleFromGuild(event.getGuild().getId());
+            event.getChannel().sendMessage("Custom role assignment has been removed. New members will not get the custom role").queue();
+        }
     }
 }
