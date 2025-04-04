@@ -6,14 +6,14 @@ Hurricane is a Discord bot designed to help server administrators manage their c
 ## ✨Features
  * 🔐**Auto Role Assignment:** Automatically assigns the `Member` role to users as soon as they join the server.
 
-   * 🛠️**Custom Role Assignment And More:** Admins can use a variety of commands to customize the bot's behaviour on their server.
+ * 🛠️**Custom Role Assignment And More:** Admins can use a variety of commands to customize the bot's behaviour on their server.
     
-            | `!setRole <role_name>` - Assign a custom role to new members. |
-            | `!removeRole <role_name>` - Remove the custom auto-assigned role.                                                                                           |
-            | `!addBadWord <role_name>` - Add a word to the server's profanity filter.                                                |
-            | `!removeBadWord <role_name>` - Remove a word from the profanity filter.                                                             |
-            | `!toggleProfanityFilter` - Toggle the profanity filter on/off.                                                                                                | 
-            | `!listBannedWords` - List currently banned words.                                                                              |     
+             `!setRole <role_name>` - Assign a custom role to new members. 
+             `!removeRole <role_name>` - Remove the custom auto-assigned role.                                                                                           
+             `!addBadWord <role_name>` - Add a word to the server's profanity filter.                                                
+             `!removeBadWord <role_name>` - Remove a word from the profanity filter.                                                             
+             `!toggleProfanityFilter` - Toggle the profanity filter on/off.                                                                                                 
+             `!listBannedWords` - List currently banned words.                                                                                  
 
  * ⚙️**Role Management:** Requires access to manage roles for proper functionality.
 
