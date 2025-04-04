@@ -1,5 +1,6 @@
 package org.example;
 
+import database.ProfanityFilterDatabase;
 import database.RoleDatabase;
 import exceptions.RoleNotFoundException;
 import net.dv8tion.jda.api.JDABuilder;
@@ -112,6 +113,50 @@ public class BotMain extends ListenerAdapter {
 
             RoleDatabase.removeRoleFromGuild(event.getGuild().getId());
             event.getChannel().sendMessage("Custom role assignment has been removed. New members will not get the custom role").queue();
+        }
+
+        // profanity filter toggle
+        if(message.startsWith("!toggleProfanityFilter")){
+            if(!event.getMember().hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)){
+                event.getChannel().sendMessage("Only admins can toggle the curse filter!").queue();
+                return;
+            }
+
+            boolean currentStatus = ProfanityFilterDatabase.isFilterEnabled(event.getGuild().getId());
+            boolean newStatus = !currentStatus;
+
+            ProfanityFilterDatabase.toggleFilter(event.getGuild().getId(), newStatus);
+
+            String statusMsg = newStatus ? "enabled" : "disabled";
+            event.getChannel().sendMessage("The profanity filter has been **" + statusMsg + "**.").queue();
+        }
+
+        // adding banned words
+        if(message.startsWith("!addBadWord")){
+            if(!event.getMember().hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)){
+                event.getChannel().sendMessage("Only admins can add curse words! Ask an admin to help you out.").queue();
+            }
+
+            String word = message.substring("!addBadWord".length()).trim().toLowerCase();
+            if(word.isEmpty()){
+                event.getChannel().sendMessage("Please specify a word to add.").queue();
+            }
+
+            ProfanityFilterDatabase.addBannedWord(event.getGuild().getId(), word);
+            event.getChannel().sendMessage("Word `" + word + "` added to the profanity filter.").queue();
+        }
+
+        if(message.startsWith("!removeBadWord")){
+            if(!event.getMember().hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)){
+                event.getChannel().sendMessage("Only admins can remove curse words!").queue();
+            }
+
+            String word = message.substring("!removeBadWord".length()).trim().toLowerCase();
+            if(word.isEmpty()){
+                event.getChannel().sendMessage("Please specify a curse word to remove.").queue();
+            }
+            ProfanityFilterDatabase.removeBannedWord(event.getGuild().getId(), word);
+            event.getChannel().sendMessage("Word `" + word + "` has been removed from the profanity filter.").queue();
         }
     }
 }
