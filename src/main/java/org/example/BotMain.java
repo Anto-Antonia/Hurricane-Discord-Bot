@@ -193,6 +193,30 @@ public class BotMain extends ListenerAdapter {
             }
         }
 
+        if(message.equalsIgnoreCase("!help")){
+            String helpMessage = "Here are all the available commands:\n";
+
+            // for the future, here will be the member commands
+
+//            helpMessage += "**!setRole <role_name>** - Assign a custom role to new members.\n";
+//            helpMessage += "**!removeRole <role_name>** - Remove the custom auto-assigned role.\n";
+//            helpMessage += "**!addBadWord <word>** - Add a word to the server's profanity filter.\n";
+//            helpMessage += "**!removeBadWord <word>** - Remove a word from the profanity filter.\n";
+//            helpMessage += "**!toggleProfanityFilter** - Toggle the profanity filter on/off.\n";
+//            helpMessage += "**!listBannedWords** - List currently banned words.\n";
+
+            if(event.getMember().hasPermission(net.dv8tion.jda.api.Permission.ADMINISTRATOR)){
+                helpMessage += "\n**Admin Commands**:\n";
+                helpMessage += "**!setRole <role_name>** - Assign a custom role to new members.\n";
+                helpMessage += "**!removeRole <role_name>** - Remove the custom role.\n";
+                helpMessage += "**!addBadWord <word>** - Add a word to the banned list.\n";
+                helpMessage += "**!removeBadWord <word>** - Remove a word from the banned list.\n";
+                helpMessage += "**!toggleProfanityFilter** - Turn the profanity filter on or off.\n";
+                helpMessage += "**!listBannedWords** - Show the list of banned words.\n";
+            }
+            event.getChannel().sendMessage(helpMessage).queue();
+        }
+
         // outside of the commands, adding the timeout functionality
         if(!event.getAuthor().isBot() && !message.startsWith("!")){
             String userId = event.getAuthor().getId();

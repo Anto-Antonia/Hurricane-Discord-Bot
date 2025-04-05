@@ -10,8 +10,8 @@ Hurricane is a Discord bot designed to help server administrators manage their c
     
              `!setRole <role_name>` - Assign a custom role to new members. 
              `!removeRole <role_name>` - Remove the custom auto-assigned role.                                                                                           
-             `!addBadWord <word_name>` - Add a word to the server's profanity filter.                                                
-             `!removeBadWord <word_name>` - Remove a word from the profanity filter.                                                             
+             `!addBadWord <word>` - Add a word to the server's profanity filter.                                                
+             `!removeBadWord <word>` - Remove a word from the profanity filter.                                                             
              `!toggleProfanityFilter` - Toggle the profanity filter on/off.                                                                                                 
              `!listBannedWords` - List currently banned words.                                                                                  
 
